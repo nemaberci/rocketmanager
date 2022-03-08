@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"><!-- CSS only -->
 <head>
     <meta charset="UTF-8">
-    <title>Rockets</title>
+    <title th:text="${rocket == null ? 'New Rocket' : 'Rocket ' + rocket.id}">Rocket 1</title>
     <script type="text/javascript" th:src="@{/js/rocket.js}"></script>
 </head>
 <body>

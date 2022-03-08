@@ -49,4 +49,9 @@ class RocketSiloService {
         return rocketSiloRepository.save(rocketSilo)
     }
 
+    fun getRocketSiloById(id: Long): RocketSilo = RocketSilo.from(
+            rocketSiloRepository.findById(id)
+                    .orElseThrow { EntityByIdNotExistsException("RocketSiloEntity", id) }
+    )
+
 }

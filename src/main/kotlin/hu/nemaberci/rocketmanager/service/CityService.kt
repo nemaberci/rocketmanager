@@ -1,6 +1,7 @@
 package hu.nemaberci.rocketmanager.service
 
-import hu.nemaberci.rocketmanager.dto.Country
+import hu.nemaberci.rocketmanager.dto.City
+import hu.nemaberci.rocketmanager.dto.RocketSilo
 import hu.nemaberci.rocketmanager.entity.CityEntity
 import hu.nemaberci.rocketmanager.entity.RocketSiloEntity
 import hu.nemaberci.rocketmanager.exception.EntityByIdNotExistsException
@@ -28,7 +29,7 @@ class CityService {
         return cityRepository.save(newCityEntity)
     }
 
-    fun listAllCountries(): List<Country> = countryRepository.findAll().map(Country::from)
+    fun listAllCities(): List<City> = cityRepository.findAll().map(City::from)
 
     fun updateCity(id: Long, cityInput: CityInput): CityEntity {
         val optionalCityEntity = cityRepository.findById(id)
@@ -57,5 +58,10 @@ class CityService {
         }
         return actualCityEntity
     }
+
+    fun getCityById(id: Long): City = City.from(
+            cityRepository.findById(id)
+                    .orElseThrow { EntityByIdNotExistsException("CityEntity", id) }
+    )
 
 }

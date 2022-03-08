@@ -3,14 +3,13 @@ package hu.nemaberci.rocketmanager.input
 import org.springframework.validation.annotation.Validated
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min
+import javax.validation.constraints.Size
 
-@Validated
 data class RocketSiloInput(
-        @Min(0)
-        @Max(1000)
+        @field:Min(0)
+        @field:Max(1000)
         val capacity: Int,
-        @Min(3)
-        @Max(255)
+        @field:Size(min = 3, max = 255)
         val identifier: String,
         val cityId: Long? = null
 )
