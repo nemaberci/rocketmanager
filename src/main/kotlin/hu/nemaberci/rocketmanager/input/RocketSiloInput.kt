@@ -9,5 +9,8 @@ data class RocketSiloInput(
         @Min(0)
         @Max(1000)
         val capacity: Int,
+        @Min(3)
+        @Max(255)
+        val identifier: String,
         val cityId: Long? = null
 )

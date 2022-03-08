@@ -13,4 +13,7 @@ class RocketSiloEntity {
 
     @Column
     var capacity: Int = 0
+
+    @Column
+    var identifier: String = ""
 }

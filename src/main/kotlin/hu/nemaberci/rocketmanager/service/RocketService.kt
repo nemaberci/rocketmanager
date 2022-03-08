@@ -24,8 +24,16 @@ class RocketService {
         return rocketRepository.findAll().map(Rocket::from)
     }
 
-    fun createRocket(rocketInput: RocketInput): RocketEntity =
-        rocketRepository.save(copyEntityDataFromInput(rocketInput))
+    fun createRocket(rocketInput: RocketInput): Rocket =
+        Rocket.from(
+                rocketRepository.save(copyEntityDataFromInput(rocketInput))
+        )
+
+    fun getRocket(id: Long): Rocket {
+        return Rocket.from(
+                rocketRepository.findById(id).orElseThrow { EntityByIdNotExistsException("RocketEntity", id) }
+        )
+    }
 
     private fun copyEntityDataFromInput(rocketInput: RocketInput, newRocketEntity: RocketEntity? = null): RocketEntity {
         val actualRocketEntity = newRocketEntity ?: RocketEntity()
@@ -44,13 +52,15 @@ class RocketService {
         return actualRocketEntity
     }
 
-    fun updateRocket(id: Long, rocketInput: RocketInput): RocketEntity {
+    fun updateRocket(id: Long, rocketInput: RocketInput): Rocket {
         val optionalRocketEntity: Optional<RocketEntity> = rocketRepository.findById(id)
         val rocketEntity = copyEntityDataFromInput(
                 rocketInput,
                 optionalRocketEntity.orElseThrow { EntityByIdNotExistsException("RocketEntity", id) }
         )
-        return rocketRepository.save(rocketEntity)
+        return Rocket.from(
+                rocketRepository.save(rocketEntity)
+        )
     }
 
 }

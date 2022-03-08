@@ -25,6 +25,7 @@ class RocketSiloService {
     fun createRocketSilo(rocketSiloInput: RocketSiloInput): RocketSiloEntity {
         val newRocketSilo = RocketSiloEntity()
         newRocketSilo.capacity = rocketSiloInput.capacity
+        newRocketSilo.identifier = rocketSiloInput.identifier
         rocketSiloInput.cityId?.let {
             newRocketSilo.city = cityRepository.findById(it).orElseThrow {
                 IllegalArgumentException("lang.error.city_not_exists")
@@ -39,6 +40,7 @@ class RocketSiloService {
             EntityByIdNotExistsException("RocketSiloEntity", id)
         }
         rocketSilo.capacity = rocketSiloInput.capacity
+        rocketSilo.identifier = rocketSiloInput.identifier
         rocketSiloInput.cityId?.let {
             rocketSilo.city = cityRepository.findById(it).orElseThrow {
                 IllegalArgumentException("lang.error.city_not_exists")

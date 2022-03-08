@@ -63,7 +63,7 @@ class SeedAll {
             cities.add(
                     cityService.createCity(
                             CityInput(
-                                    name = "City" + Random.nextInt(10000, 100000),
+                                    name = "City-" + Random.nextInt(10000, 100000),
                                     countryId = countries.random().id
                             )
                     )
@@ -75,7 +75,8 @@ class SeedAll {
                     rocketSiloService.createRocketSilo(
                             RocketSiloInput(
                                     capacity = Random.nextInt(100, 1000),
-                                    cityId = cities.random().id
+                                    cityId = cities.random().id,
+                                    identifier = "Silo-${Random.nextInt(10000, 100000)}"
                             )
                     )
             )
@@ -90,6 +91,14 @@ class SeedAll {
                     )
             )
         }
+
+        rocketSiloService.createRocketSilo(
+                RocketSiloInput(
+                        capacity = 1,
+                        cityId = cities.random().id,
+                        identifier = "Silo-Capacity-1"
+                )
+        )
 
     }
 
