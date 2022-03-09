@@ -5,7 +5,7 @@ import hu.nemaberci.rocketmanager.entity.CityEntity
 data class City(
         val id: Long,
         val name: String,
-        val county: Country
+        val country: Country
 ) {
     companion object {
         fun from(cityEntity: CityEntity): City {

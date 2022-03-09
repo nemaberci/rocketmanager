@@ -14,10 +14,10 @@ class CountryService {
     @Autowired
     lateinit var countryRepository: CountryRepository
 
-    fun createCountry(countyInput: CountryInput): CountryEntity {
+    fun createCountry(countryInput: CountryInput): CountryEntity {
         val newCountryEntity = CountryEntity()
-        newCountryEntity.name = countyInput.name
-        newCountryEntity.code = countyInput.code
+        newCountryEntity.name = countryInput.name
+        newCountryEntity.code = countryInput.code
         return countryRepository.save(newCountryEntity)
     }
 

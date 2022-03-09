@@ -8,11 +8,11 @@ data class Country(
         val code: String
 ) {
     companion object {
-        fun from(countyEntity: CountryEntity): Country {
+        fun from(countryEntity: CountryEntity): Country {
             return Country(
-                    countyEntity.id,
-                    countyEntity.name,
-                    countyEntity.code
+                    countryEntity.id,
+                    countryEntity.name,
+                    countryEntity.code
             )
         }
     }
