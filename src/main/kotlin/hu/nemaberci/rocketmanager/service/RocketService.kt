@@ -63,4 +63,7 @@ class RocketService {
         )
     }
 
+    fun getByCityId(id: Long) = rocketRepository.getAllBySilo_City_Id(id)
+            .map(Rocket::from)
+
 }

@@ -54,4 +54,7 @@ class RocketSiloService {
                     .orElseThrow { EntityByIdNotExistsException("RocketSiloEntity", id) }
     )
 
+    fun getByCityId(id: Long): List<RocketSilo> = rocketSiloRepository.getAllByCity_Id(id)
+            .map(RocketSilo::from)
+
 }

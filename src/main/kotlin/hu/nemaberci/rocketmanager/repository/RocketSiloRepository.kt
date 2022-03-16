@@ -6,7 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface RocketSiloRepository: JpaRepository<RocketSiloEntity, Long> {
-
-
-
+    fun getAllByCity_Id(cityId: Long): List<RocketSiloEntity>
 }
