@@ -77,4 +77,11 @@ class RocketApiController {
         return errors
     }
 
+    @GetMapping("/all")
+    fun allRockets(): ResponseEntity<Any> {
+        return ResponseEntity.ok(
+                rocketService.listAllRockets()
+        )
+    }
+
 }
