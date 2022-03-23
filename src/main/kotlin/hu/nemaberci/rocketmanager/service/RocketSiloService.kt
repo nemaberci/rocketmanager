@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
+// todo: does not use dto
 class RocketSiloService {
 
     @Autowired

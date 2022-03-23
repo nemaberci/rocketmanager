@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
+// todo: does not use dto
 class CountryService {
 
     @Autowired

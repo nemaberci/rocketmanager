@@ -27,7 +27,7 @@ class CityApiController {
         return ResponseEntity.ok(null)
     }
 
-    @PostMapping("/new")
+    @RequestMapping(path = ["/new"], method = [RequestMethod.POST])
     fun createRocket(model: Model,
                      @Valid cityInput: CityInput): ResponseEntity<Any> {
         cityService.createCity(cityInput)
